@@ -189,7 +189,7 @@ class PatchGANDiscriminator(nn.Module):
 
 + **다음은 baseline 코드를 사용하여 복원한 이미지이다.** 
 
-<img width="30%" src="[https://github.com/user-attachments/assets/b6912b7f-66a9-46bc-bd70-afe9fe2eb3ac](https://github.com/user-attachments/assets/c9140eb9-5455-4496-827f-f7f02a7b9626)"/>
+<img width="30%" src="https://github.com/user-attachments/assets/b6912b7f-66a9-46bc-bd70-afe9fe2eb3ac](https://github.com/user-attachments/assets/c9140eb9-5455-4496-827f-f7f02a7b9626)"/>
 
 
 
