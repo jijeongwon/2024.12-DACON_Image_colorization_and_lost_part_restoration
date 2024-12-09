@@ -193,7 +193,7 @@ Optimizer를 RMSProp로 바꿨을 때 학습 속도가 Adam보다 느리긴 했�
 
 + **전체적인 submission 중 5개만 뽑아낸 표이다.** 
 
-<img width="90%" src="https://github.com/user-attachments/assets/05122db1-61f3-4411-9a6d-ce6b189f7276"/>
+<img width="90%" src="https://github.com/user-attachments/assets/ab440dff-1d13-4cde-9521-16bcdcfaa441"/>
 
 limit을 걸고 학습했을 때와 걸지 않고 학습했을 때 Public Score 차이가 많이 나는 것을 알 수 있다.
 
