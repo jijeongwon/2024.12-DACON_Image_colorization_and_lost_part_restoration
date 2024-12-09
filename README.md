@@ -31,6 +31,7 @@
     transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1))
 ])
 
+
 <img width="30%" src="https://github.com/user-attachments/assets/35d2245d-aa04-401b-b236-ae2be9ac977f"/>
 
 ***
@@ -43,7 +44,6 @@
     
     train_input, val_input = train_test_split(sorted(os.listdir("/home/work/.dacon/opendata/train_input")), test_size=0.2, random_state=CFG['SEED'])
     train_gt, val_gt = train_test_split(sorted(os.listdir("/home/work/.dacon/opendata/train_gt")), test_size=0.2, random_state=CFG['SEED'])
-
 
 ***
 
