@@ -52,7 +52,9 @@
 
 ## II. 사용 모델
 
-우선 Generator 모델이다. 여기서는 "Spectral Normalizatoin", "Group Normalization", "각 블록마다 Batch Normalization", "다운샘플링/업샘플링 블록 분리" 등의 기능을 추가해보았다. 그 중 가장 성능이 좋았던 모델구조는 이렇다.
+우선 Generator 모델이다. 여기서는 "Spectral Normalizatoin", "Group Normalization", "각 블록마다 Batch Normalization", "다운샘플링/업샘플링 블록 분리" 등의 기능을 추가해보았다. 
+
+그 중 가장 성능이 좋았던 모델구조는 이렇다.
 
 + **U-Net 기반 Generator**
   
@@ -100,6 +102,8 @@ class UNet(nn.Module):
         d4 = self.dec4(torch.cat([self.up4(d3), e1], dim=1))
 
         return torch.sigmoid(self.final(d4))
+
+기존 baseline 코드에서 'batch_norm'을 'group_norm'으로 변경하였고, 'down_sampling블록'과 'up_sampling블록'을 분리하였다.
 
 
 + **PatchGAN Discriminator**
