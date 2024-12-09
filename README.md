@@ -29,10 +29,11 @@
     transforms.RandomHorizontalFlip(p=0.5),
     transforms.RandomVerticalFlip(p=0.5), 
     transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1))
-])
+    ])
 
 
 <img width="30%" src="https://github.com/user-attachments/assets/35d2245d-aa04-401b-b236-ae2be9ac977f"/>
+
 
 ***
  
