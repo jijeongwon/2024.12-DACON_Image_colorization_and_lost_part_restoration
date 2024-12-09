@@ -193,7 +193,7 @@ class PatchGANDiscriminator(nn.Module):
 
 limit을 걸고 학습했을 때와 걸지 않고 학습했을 때 Public Score 차이가 많이 나는 것을 알 수 있다.
 
-또한, transform을 진행하지 않은 데이터셋을 활용하여 모델의 구조와 loss를 바꿔줬을 때 가장 이미지 복원 성능이 좋은 것을 확인할 수 있다.
+또한, transform을 진행하지 않은 데이터셋을 활용하여 GroupNorm을 추가함으로써 모델의 구조를 변형하고 GAN 학습에 적절한 loss를 조합했을 때 가장 이미지 복원 성능이 좋은 것을 확인할 수 있다.
 
 
 
