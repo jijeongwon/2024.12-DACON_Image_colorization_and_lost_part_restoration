@@ -42,6 +42,9 @@
     train_input, val_input = train_test_split(sorted(os.listdir("/home/work/.dacon/opendata/train_input")), test_size=0.2, random_state=CFG['SEED'])
     train_gt, val_gt = train_test_split(sorted(os.listdir("/home/work/.dacon/opendata/train_gt")), test_size=0.2, random_state=CFG['SEED'])
 
+<img width="65%" src=https://github.com/user-attachments/assets/35d2245d-aa04-401b-b236-ae2be9ac977f"/>
+
+
 ***
 
 ## II. 사용 모델
