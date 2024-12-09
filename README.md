@@ -189,9 +189,11 @@ class PatchGANDiscriminator(nn.Module):
 
 + **전체적인 submission을 순서대로 보여주는 표이다.** 
 
-<img width="70%" src="https://github.com/user-attachments/assets/05122db1-61f3-4411-9a6d-ce6b189f7276"/>
+<img width="90%" src="https://github.com/user-attachments/assets/05122db1-61f3-4411-9a6d-ce6b189f7276"/>
 
+limit을 걸고 학습했을 때와 걸지 않고 학습했을 때 Public Score 차이가 많이 나는 것을 알 수 있다.
 
+또한, transform을 진행하지 않은 데이터셋을 활용하여 모델의 구조와 loss를 바꿔줬을 때 가장 이미지 복원 성능이 좋은 것을 확인할 수 있다.
 
 
 
