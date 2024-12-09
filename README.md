@@ -108,13 +108,21 @@ class UNet(nn.Module):
   + **Loss : 1387.4**
 
 
-## III. 그 외 (scheduler, loss, Optimizer, ...)
+## III. 그 외 시도해본 것들 (limit, scheduler, loss, Optimizer, ...)
 
-
+    #scheduler 추가
     scheduler = StepLR(step_size=10, gamma=0.5)
+    scheduler_G = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer_G, mode='min', factor=0.1, patience=3, verbose=True)
+    scheduler_D = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer_D, mode='min', factor=0.1, patience=3, verbose=True)
     
-    
+    #loss 변경
+    adversarial_loss = nn.BCEWithLogitsLoss()  #원래 nn.BCELoss
+    pixel_loss = nn.L1Loss()  #원래 MSELoss
 
+    #optimizer 변경
+    optimizer_G = optim.RMSprop(generator.parameters(), lr=1e-4) #원래 Adam
+    optimizer_D = optim.RMSprop(discriminator.parameters(), lr=1e-4) #원래 Adam
+    
 ***
 
 
