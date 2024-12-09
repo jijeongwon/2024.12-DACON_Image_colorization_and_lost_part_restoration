@@ -21,7 +21,7 @@
    #### 2. 데이터 전처리
 
  기존의 resize, totensor, normalize 방법 외에도 아래의 여러 가지 전처리 방법을 적용시켜보았다.
- (전처리 하였을 때 성능이 더 안좋아서 결국 n번째 실험 부터는 transform 모두 제거........)
+ (전처리 하였을 때 성능 훨씬 안 좋고 눈으로 봐도 이상해서 결국 n번째 실험 부터는 transform 모두 제거........)
  
     # 데이터 전처리 설정
     
@@ -52,10 +52,55 @@
 
 ## II. 사용 모델
 
+우선 Generator 모델이다. 여기서는 "Spectral Normalizatoin", "Group Normalization", "각 블록마다 Batch Normalization", "다운샘플링/업샘플링 블록 분리" 등의 기능을 추가해보았다. 그 중 가장 성능이 좋았던 모델구조는 이렇다.
+
 + **U-Net 기반 Generator**
-  + learning_rate, n_estimators, max_depth, min_samples_leaf 등의 하이퍼파라미터를 조정해가며 최적의 성능을 도출.
-  + **Train : 0.9192, Test : 0.8806**
-  + **Loss : 1387.4**
+  
+class UNet(nn.Module):
+    def __init__(self):
+        super(UNet, self).__init__()
+        self.enc1 = self.conv_block(3, 64)
+        self.enc2 = self.conv_block(64, 128)
+        self.enc3 = self.conv_block(128, 256)
+        self.enc4 = self.conv_block(256, 512)
+        self.enc5 = self.conv_block(512, 1024)
+
+        self.up1 = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
+        self.dec1 = self.conv_block(1024 + 512, 512)
+
+        self.up2 = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
+        self.dec2 = self.conv_block(512 + 256, 256)
+
+        self.up3 = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
+        self.dec3 = self.conv_block(256 + 128, 128)
+
+        self.up4 = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
+        self.dec4 = self.conv_block(128 + 64, 64)
+
+        self.final = nn.Conv2d(64, 3, kernel_size=1)
+    
+    def conv_block(self, in_channels, out_channels):
+        return nn.Sequential(
+            nn.Conv2d(in_channels, out_channels, kernel_size=3, padding=1),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(out_channels, out_channels, kernel_size=3, padding=1),
+            nn.ReLU(inplace=True)
+        )
+    
+    def forward(self, x):
+        e1 = self.enc1(x)
+        e2 = self.enc2(nn.MaxPool2d(2)(e1))
+        e3 = self.enc3(nn.MaxPool2d(2)(e2))
+        e4 = self.enc4(nn.MaxPool2d(2)(e3))
+        e5 = self.enc5(nn.MaxPool2d(2)(e4))
+
+        d1 = self.dec1(torch.cat([self.up1(e5), e4], dim=1))
+        d2 = self.dec2(torch.cat([self.up2(d1), e3], dim=1))
+        d3 = self.dec3(torch.cat([self.up3(d2), e2], dim=1))
+        d4 = self.dec4(torch.cat([self.up4(d3), e1], dim=1))
+
+        return torch.sigmoid(self.final(d4))
+
 
 + **PatchGAN Discriminator**
   + learning_rate, n_estimators, max_depth, min_samples_leaf 등의 하이퍼파라미터를 조정해가며 최적의 성능을 도출.
@@ -63,13 +108,14 @@
   + **Loss : 1387.4**
 
 
-## III. 그 외 코드
+## III. 그 외 (scheduler, loss, Optimizer, ...)
 
 
-+ **Image Dataset**
-  + learning_rate, n_estimators, max_depth, min_samples_leaf 등의 하이퍼파라미터를 조정해가며 최적의 성능을 도출.
-  + **Train : 0.9192, Test : 0.8806**
-  + **Loss : 1387.4**
+    scheduler = StepLR(step_size=10, gamma=0.5)
+    
+    
+
+***
 
 
 ## IV. 실험 결과
@@ -78,13 +124,11 @@
     baseline - submission_1
     public score: 0.3396743653
     -----------------------------------------------
-    코드공유 - submission_8
-    public score: 0.3396743653
+    baseline + transform/scheduler - submission_4
+    public score: 0.1303616413
     -----------------------------------------------
-    Training Model MLP Regressor
-    Training R-squared: 0.6556950762062116
-    Testing R-squared: 0.7407113432497212
-    Mean Absolute Error: 2349.4856341313366
+    UNet+PatchGAN - submission_8
+    public score: 0.3396743653
     -----------------------------------------------
     Training Model AdaBoost
     Training R-squared: 0.7081650991544655
@@ -92,9 +136,19 @@
     Mean Absolute Error: 2082.1281143876554
     -----------------------------------------------
 
+    
+    -----------------------------------------------
+
 
 
 ## V. 결론
+
++ **다음은 baseline 코드를 사용하여 복원한 이미지이다.** 
+
+
+
+
+
 
 
 
