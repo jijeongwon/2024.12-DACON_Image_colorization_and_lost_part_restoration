@@ -200,5 +200,13 @@ limit을 걸고 학습했을 때와 걸지 않고 학습했을 때 Public Score 
 또한, transform을 진행하지 않은 데이터셋을 활용하여 GroupNorm을 추가함으로써 모델의 구조를 변형하고 GAN 학습에 적절한 loss를 조합했을 때 가장 이미지 복원 성능이 좋은 것을 확인할 수 있다.
 
 
+가장 성능이 잘 나왔던 코드는 다음과 같다. 
+
+우선, Generator와 Discriminator 모델은 앞서 + [II. 사용 모델](https://github.com/jijeongwon/dacon/blob/main/README.md#ii-%EB%AA%A8%EB%8D%B8-%EC%84%A4%EB%AA%85) 에서 언급한 것을 사용하였다.
+
+또한 loss는 BCEWithLogitsLoss, L1Loss를 사용하였고, Optimizer는 RMSProp를 사용하였으며, learning_rate는 1e-4로 설정하였다.
+
+마지막으로 scheduler는 ReduceLROnPlateau를 사용하였을 때 Public Score가 0.5544991906가 나왔다.
+
 
 
