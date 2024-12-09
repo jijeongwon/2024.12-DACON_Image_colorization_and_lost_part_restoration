@@ -110,7 +110,7 @@ class UNet(nn.Module):
 기존 baseline 코드에서 'batch_norm'을 'group_norm'으로 변경하였고, 'down_sampling블록'과 'up_sampling블록'을 분리하였다.
 
 
-다음은 Discriminator 모델이다. 여기서는 "Spectral Normalizatoin", "Group Normalization" 등의 기능을 추가해보았다. 
++ **다음은 Discriminator 모델이다. 여기서는 "Spectral Normalizatoin", "Group Normalization" 등의 기능을 추가해보았다.** 
 
 Generator 모델에서와 마찬가지로, 기존 baseline 코드의 Discriminator 모델에서 "Group Normalization"만 추가했을 때 가장 성능이 좋았다.
 
