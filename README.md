@@ -156,10 +156,16 @@ class PatchGANDiscriminator(nn.Module):
     optimizer_D = optim.RMSprop(discriminator.parameters(), lr=1e-4) #원래 Adam
 ```
 
+기존 loss: BCELoss -> 새로운 loss: BCELogitsLoss
 
+loss를 BCELogitsLoss로 바꿨을 때 loss가 불안정하게 움직이는 것을 방지할 수 있었고, Vanishing Gradient를 줄일 수 있었다.
+
+
+기존 Optimizer: Adam -> 새로운 Optimizer: RMSProp
+
+Optimizer를 RMSProp로 바꿨을 때 학습 속도가 Adam보다 느리긴 했지만, Generator와 Discriminator 간의 균형을 유지하면서 보다 안정적으로 학습시킬 수 있었다.
 
 ***
-
 
 ## IV. 실험 결과
 
