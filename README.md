@@ -156,6 +156,8 @@ class PatchGANDiscriminator(nn.Module):
     optimizer_D = optim.RMSprop(discriminator.parameters(), lr=1e-4) #원래 Adam
 ```
 
+
+
 ***
 
 
@@ -171,7 +173,8 @@ class PatchGANDiscriminator(nn.Module):
     UNet+PatchGAN - submission_8
     public score: 0.3396743653
     -----------------------------------------------
-    Training Model AdaBoost
+    UNet+PatchGAN + BCEWithLogitsLoss/L1Loss
+    + RMSProp, ReduceLROnPlateau - submission_best
     Training R-squared: 0.7081650991544655
     Testing R-squared: 0.7983571856679336
     Mean Absolute Error: 2082.1281143876554
@@ -186,7 +189,7 @@ class PatchGANDiscriminator(nn.Module):
 
 + **다음은 baseline 코드를 사용하여 복원한 이미지이다.** 
 
-
+<img width="30%" src="https://github.com/user-attachments/assets/b6912b7f-66a9-46bc-bd70-afe9fe2eb3ac"/>
 
 
 
