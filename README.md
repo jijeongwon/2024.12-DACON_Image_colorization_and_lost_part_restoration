@@ -24,13 +24,13 @@
  (전처리 하였을 때 성능 훨씬 안 좋고 눈으로 봐도 이상해서 결국 n번째 실험 부터는 transform 모두 제거........)
  
     # 데이터 전처리 설정
-    
+```
     transform = transforms.Compose([
     transforms.RandomHorizontalFlip(p=0.5),
     transforms.RandomVerticalFlip(p=0.5), 
     transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1))
     ])
-
+```
 
 <img width="30%" src="https://github.com/user-attachments/assets/35d2245d-aa04-401b-b236-ae2be9ac977f"/>
 <img width="30%" src="https://github.com/user-attachments/assets/d8be503a-aac9-4808-8f8a-eca313c957bb"/>
@@ -44,9 +44,10 @@
 데이터셋을 train과 validation으로 분할하였다. 전체 데이터의 80%는 train에 사용하였고, 나머지 20%는 validation에 사용하였다.
 
     # 데이터셋 분리
-    
+```
     train_input, val_input = train_test_split(sorted(os.listdir("/home/work/.dacon/opendata/train_input")), test_size=0.2, random_state=CFG['SEED'])
     train_gt, val_gt = train_test_split(sorted(os.listdir("/home/work/.dacon/opendata/train_gt")), test_size=0.2, random_state=CFG['SEED'])
+```
 
 ***
 
@@ -57,7 +58,8 @@
 그 중 가장 성능이 좋았던 모델구조는 이렇다.
 
 + **U-Net 기반 Generator**
-  
+
+```
 class UNet(nn.Module):
     def __init__(self):
         super(UNet, self).__init__()
@@ -102,6 +104,7 @@ class UNet(nn.Module):
         d4 = self.dec4(torch.cat([self.up4(d3), e1], dim=1))
 
         return torch.sigmoid(self.final(d4))
+```
 
 기존 baseline 코드에서 'batch_norm'을 'group_norm'으로 변경하였고, 'down_sampling블록'과 'up_sampling블록'을 분리하였다.
 
@@ -111,7 +114,7 @@ class UNet(nn.Module):
 Generator 모델에서와 마찬가지로, 기존 baseline 코드의 Discriminator 모델에서 "Group Normalization"만 추가했을 때 가장 성능이 좋았다.
 
 + **PatchGAN Discriminator**
-  
+```
 class PatchGANDiscriminator(nn.Module):
     def __init__(self, in_channels=3):
         super(PatchGANDiscriminator, self).__init__()
@@ -133,7 +136,7 @@ class PatchGANDiscriminator(nn.Module):
 
     def forward(self, x):
         return self.model(x)
-
+```
 
 ## III. 그 외 시도해본 것들 (limit, scheduler, loss, Optimizer, ...)
 
