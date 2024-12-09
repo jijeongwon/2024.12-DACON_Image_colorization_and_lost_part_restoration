@@ -21,7 +21,7 @@
    #### 2. 데이터 전처리
 
  기존의 resize, totensor, normalize 방법 외에도 아래의 여러 가지 전처리 방법을 적용시켜보았다.
- #(전처리 하였을 때 성능이 더 안좋아서 결국 n번째 실험 부터는 transform 모두 제거.)
+ (전처리 하였을 때 성능이 더 안좋아서 결국 n번째 실험 부터는 transform 모두 제거........)
  
     # 데이터 전처리 설정
     
@@ -34,6 +34,7 @@
 
 <img width="30%" src="https://github.com/user-attachments/assets/35d2245d-aa04-401b-b236-ae2be9ac977f"/>
 <img width="30%" src="https://github.com/user-attachments/assets/d8be503a-aac9-4808-8f8a-eca313c957bb"/>
+
 
 ***
  
