@@ -177,23 +177,21 @@ Optimizer를 RMSProp로 바꿨을 때 학습 속도가 Adam보다 느리긴 했�
     public score: 0.1303616413
     -----------------------------------------------
     UNet+PatchGAN - submission_8
-    public score: 0.3396743653
+    public score: 0.4301832771
+    -----------------------------------------------
+    UNet+PatchGAN + group_norm - submission_11
+    public score: 0.4497518418
     -----------------------------------------------
     UNet+PatchGAN + BCEWithLogitsLoss/L1Loss
     + RMSProp, ReduceLROnPlateau - submission_best
-    Training R-squared: 0.7081650991544655
-    Testing R-squared: 0.7983571856679336
-    Mean Absolute Error: 2082.1281143876554
-    -----------------------------------------------
-
-    
+    public score: 0.5544991906
     -----------------------------------------------
 
 
 
 ## V. 결론
 
-+ **전체적인 submission을 순서대로 보여주는 표이다.** 
++ **전체적인 submission 중 5개만 뽑아낸 표이다.** 
 
 <img width="90%" src="https://github.com/user-attachments/assets/05122db1-61f3-4411-9a6d-ce6b189f7276"/>
 
