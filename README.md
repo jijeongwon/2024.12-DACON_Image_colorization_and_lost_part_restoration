@@ -187,9 +187,9 @@ class PatchGANDiscriminator(nn.Module):
 
 ## V. 결론
 
-+ **다음은 baseline 코드를 사용하여 복원한 이미지이다.** 
++ **전체적인 submission을 순서대로 보여주는 표이다.** 
 
-<img width="30%" src="https://github.com/user-attachments/assets/05122db1-61f3-4411-9a6d-ce6b189f7276"/>
+<img width="70%" src="https://github.com/user-attachments/assets/05122db1-61f3-4411-9a6d-ce6b189f7276"/>
 
 
 
