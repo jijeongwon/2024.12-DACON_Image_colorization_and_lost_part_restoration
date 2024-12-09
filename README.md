@@ -22,9 +22,9 @@
 
  기존의 resize, totensor, normalize 방법 외에도 아래의 여러 가지 전처리 방법을 적용시켜보았다.
  (전처리 하였을 때 성능 훨씬 안 좋고 눈으로 봐도 이상해서 결국 n번째 실험 부터는 transform 모두 제거........)
- 
+
+ ```
     # 데이터 전처리 설정
-```
     transform = transforms.Compose([
     transforms.RandomHorizontalFlip(p=0.5),
     transforms.RandomVerticalFlip(p=0.5), 
