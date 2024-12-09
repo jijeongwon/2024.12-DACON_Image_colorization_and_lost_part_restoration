@@ -204,5 +204,6 @@ limit을 걸고 학습했을 때와 걸지 않고 학습했을 때 Public Score 
 
 우선, Generator와 Discriminator 모델은 앞서 + [II. 사용 모델](https://github.com/jijeongwon/dacon#ii-%EC%82%AC%EC%9A%A9-%EB%AA%A8%EB%8D%B8) 에서 언급한 것을 사용하였다. 또한 loss는 BCEWithLogitsLoss, L1Loss를 사용하였고, Optimizer는 RMSProp를 사용하였으며, learning_rate는 1e-4로 설정하였다. 마지막으로 scheduler는 ReduceLROnPlateau를 사용하였을 때 Public Score가 0.5544991906가 나왔다.
 
+***
 
-
+특정 패턴을 복원하는 데에 있어서 어려움을 겪었지만, 다음 기회가 있다면 그땐 마스크를 직접 따서 그 부분을 집중적으로 복원할 수 있는 방법을 시도해보고 싶다.
