@@ -202,11 +202,7 @@ limit을 걸고 학습했을 때와 걸지 않고 학습했을 때 Public Score 
 
 가장 성능이 잘 나왔던 코드는 다음과 같다. 
 
-우선, Generator와 Discriminator 모델은 앞서 + [II. 사용 모델](https://github.com/jijeongwon/dacon/blob/main/README.md#ii-%EB%AA%A8%EB%8D%B8-%EC%84%A4%EB%AA%85) 에서 언급한 것을 사용하였다.
-
-또한 loss는 BCEWithLogitsLoss, L1Loss를 사용하였고, Optimizer는 RMSProp를 사용하였으며, learning_rate는 1e-4로 설정하였다.
-
-마지막으로 scheduler는 ReduceLROnPlateau를 사용하였을 때 Public Score가 0.5544991906가 나왔다.
+우선, Generator와 Discriminator 모델은 앞서 + [II. 사용 모델](https://github.com/jijeongwon/dacon/blob/main/README.md#ii-%EB%AA%A8%EB%8D%B8-%EC%84%A4%EB%AA%85) 에서 언급한 것을 사용하였다. 또한 loss는 BCEWithLogitsLoss, L1Loss를 사용하였고, Optimizer는 RMSProp를 사용하였으며, learning_rate는 1e-4로 설정하였다. 마지막으로 scheduler는 ReduceLROnPlateau를 사용하였을 때 Public Score가 0.5544991906가 나왔다.
 
 
 
