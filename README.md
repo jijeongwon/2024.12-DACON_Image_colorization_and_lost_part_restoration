@@ -1,6 +1,5 @@
-# dacon
 
-#  AI프로젝트II - 이미지 색상화 및 손실 부분 복원 AI 경진대회
+#  2024.12-DACON_Image_colorization_and_lost_part_restoration
 
 ### 목차
 
