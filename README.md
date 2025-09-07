@@ -1,5 +1,5 @@
 
-#  2024.12-DACON_Image colorization and lost part restoration
+#  [2024.12-DACON] Image colorization and lost part restoration
 ***
 ### 목차
 
