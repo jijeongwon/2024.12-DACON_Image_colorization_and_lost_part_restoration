@@ -1,6 +1,6 @@
 
 #  2024.12-DACON_Image_colorization_and_lost_part_restoration
-
+***
 ### 목차
 
 + [I. 데이터 처리](https://github.com/jijeongwon/dacon/blob/main/README.md#i-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%98%EB%A6%AC)
